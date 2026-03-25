@@ -331,6 +331,21 @@
             text-align: center;
         }
 
+        .article-image figcaption .img-credit {
+            display: block;
+            font-size: 11px;
+            font-style: normal;
+            color: var(--gray-400);
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .article-image figcaption .img-credit a {
+            color: var(--gray-400);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
         /* === CODE SCREENSHOTS === */
         .code-screenshot {
             background: #1e1e2e;
@@ -593,7 +608,7 @@
             <div class="article-meta">
                 <div class="author-avatar">SD</div>
                 <div class="author-info">
-                    <div class="author-name">Sahil Dhawan</div>
+                    <div class="author-name">Sahil Dhawan <span style="font-weight: 400; color: #86868b;">&amp;</span> Claude <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 400; color: #86868b;">(Anthropic)</span></div>
                     <div class="article-date">March 2026</div>
                 </div>
                 <div class="read-time">10 min read</div>
@@ -628,7 +643,7 @@
 
                 <figure class="article-image">
                     <img src="https://images.unsplash.com/photo-1770159116807-9b2a7bb82294?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=srgb&w=1360" alt="Developer working late at night, laptop glowing in the dark" />
-                    <figcaption>The moments that made us who we are happened when nobody was watching.</figcaption>
+                    <figcaption>The moments that made us who we are happened when nobody was watching.<span class="img-credit">Photo by Muhmed Alaa El-Bank on <a href="https://unsplash.com" target="_blank">Unsplash</a></span></figcaption>
                 </figure>
 
                 <p>For the first time in my career, I feel like the ground underneath me is moving in a direction I can't fully control. And I'll be honest with you &mdash; even after two decades of building software, even after surviving multiple recessions, the dot-com crash, and every industry upheaval in between &mdash; I feel insecure. And not the kind of insecurity where you question your last pull request. The kind where you lie awake wondering if the thing you've spent your entire adult life getting good at might just... not matter anymore. At least not in the way it used to.</p>
@@ -695,7 +710,7 @@
 
                 <figure class="article-image">
                     <img src="images/openclaw.jpg" alt="OpenClaw AI bot beating a human player — Game Over screen showing the bot scored 18 to the human's 16" />
-                    <figcaption>An AI bot competing with humans in real-time. Not just writing code — playing to win.</figcaption>
+                    <figcaption>An AI bot competing with humans in real-time. Not just writing code — playing to win.<span class="img-credit">Screenshot from OpenClaw</span></figcaption>
                 </figure>
 
                 <p>There's a term people use now &mdash; <em>vibe coding</em>. You talk to the machine, it writes the code, you look at the output, you adjust your prompt, and you keep going until it works. No one reads the code. No one needs to understand it. It just... works. Usually. For now.</p>
@@ -835,7 +850,7 @@ Done in 4 minutes 32 seconds.</pre>
 
                 <figure class="article-image">
                     <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=1360&q=80" alt="Potter's hands shaping clay on a wheel" />
-                    <figcaption>Craft has always required hands, patience, and imperfection.</figcaption>
+                    <figcaption>Craft has always required hands, patience, and imperfection.<span class="img-credit">Photo by Alex Jones on <a href="https://unsplash.com" target="_blank">Unsplash</a></span></figcaption>
                 </figure>
 
             </div>
@@ -858,7 +873,7 @@ Done in 4 minutes 32 seconds.</pre>
 
                 <figure class="article-image">
                     <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1360&q=80" alt="Mountain peak at sunrise" />
-                    <figcaption>The view from the top is earned, never generated.</figcaption>
+                    <figcaption>The view from the top is earned, never generated.<span class="img-credit">Photo by Marek Piwnicki on <a href="https://unsplash.com" target="_blank">Unsplash</a></span></figcaption>
                 </figure>
 
                 <h2>What Greatness Looks Like Now</h2>
@@ -906,9 +921,8 @@ Done in 4 minutes 32 seconds.</pre>
 
     </article>
 
-    <!-- AUTHOR CREDIT -->
+    <!-- FOOTNOTE -->
     <div style="max-width: 680px; margin: 0 auto; padding: 0 24px 48px; text-align: center; border-top: 1px solid #e8e8ed; margin-top: 32px; padding-top: 40px;">
-        <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: #86868b; margin-bottom: 12px;">Written by <strong style="color: #515154;">Sahil Dhawan</strong> &amp; <strong style="color: #515154;">Claude</strong> <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #86868b;">(Anthropic)</span></p>
         <p style="font-family: 'Playfair Display', serif; font-size: 14px; color: #86868b; font-style: italic;">Yes, I used AI to help write an article about not letting AI replace us. I see the irony.</p>
     </div>
 
