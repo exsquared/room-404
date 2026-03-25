@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Craft Was Never About the Code — Room 404</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a1f35;
+            --navy-light: #242d45;
+            --red: #c42704;
+            --teal: #15b097;
+            --cream: #f8f5f0;
+            --gray-100: #f5f5f7;
+            --gray-200: #e8e8ed;
+            --gray-400: #86868b;
+            --gray-600: #515154;
+            --gray-800: #1d1d1f;
+            --white: #ffffff;
+            --content-width: 680px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--gray-600);
+            font-size: 18px;
+            line-height: 1.75;
+        }
+
+        /* === STICKY HEADER === */
+        .site-header {
+            background: var(--navy);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .site-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-logo {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 400;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .site-logo span {
+            color: var(--red);
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .site-nav a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.25s ease;
+        }
+
+        .site-nav a:hover,
+        .site-nav a.active {
+            color: var(--white);
+        }
+
+        /* === HERO === */
+        .article-hero {
+            background: var(--navy);
+            padding: 80px 24px 100px;
+        }
+
+        .article-hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .article-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 28px;
+        }
+
+        .article-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 54px);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .article-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: var(--gray-400);
+            line-height: 1.6;
+            max-width: 520px;
+        }
+
+        .article-meta {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal), var(--navy-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .author-info {
+            font-size: 14px;
+        }
+
+        .author-name {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .article-date {
+            color: var(--gray-400);
+            margin-top: 2px;
+        }
+
+        .read-time {
+            color: var(--gray-400);
+            font-size: 13px;
+            margin-left: auto;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* === CONTENT WRAPPER (centered 680px) === */
+        .content-wrap {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* === ARTICLE SECTION (default white bg) === */
+        .article-section {
+            padding: 0 0 16px 0;
+        }
+
+        .article-section:first-of-type {
+            padding-top: 72px;
+        }
+
+        /* Section after hero or quote band gets top padding */
+        .article-hero + .article-section,
+        .quote-band + .article-section {
+            padding-top: 64px;
+        }
+
+        /* Consecutive sections get consistent gap */
+        .article-section + .article-section {
+            padding-top: 48px;
+        }
+
+        .article-section p {
+            font-size: 18px;
+            line-height: 1.75;
+            color: var(--gray-600);
+            margin-bottom: 1.5em;
+        }
+
+        .article-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-section p.lead {
+            font-size: 21px;
+            font-family: 'Playfair Display', serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        .article-section p strong {
+            color: var(--gray-800);
+            font-weight: 600;
+        }
+
+        .article-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-top: 56px;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .article-section h2:first-child {
+            margin-top: 0;
+        }
+
+        /* === EMPHASIS TEXT === */
+        .emphasis {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 20px !important;
+            color: var(--navy) !important;
+            font-weight: 700;
+        }
+
+        /* === SEPARATOR === */
+        .separator {
+            text-align: center;
+            margin: 56px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gray-200);
+        }
+
+        .separator span {
+            font-size: 14px;
+            color: var(--gray-400);
+            letter-spacing: 8px;
+            flex-shrink: 0;
+        }
+
+        /* === FULL-WIDTH QUOTE BAND (beige/cream) === */
+        .quote-band {
+            background: var(--cream);
+            padding: 64px 0;
+        }
+
+        .quote-band-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .quote-band .big-quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            color: var(--red);
+            opacity: 0.25;
+            line-height: 0.6;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .quote-band blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-style: italic;
+            color: var(--gray-800);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .quote-band cite {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            color: var(--gray-400);
+        }
+
+        .quote-band cite strong {
+            color: var(--gray-600);
+        }
+
+        /* === IMAGES === */
+        .article-image {
+            margin: 48px 0;
+        }
+
+        .article-image img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            display: block;
+        }
+
+        .article-image figcaption {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--gray-400);
+            margin-top: 12px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* === CODE SCREENSHOTS === */
+        .code-screenshot {
+            background: #1e1e2e;
+            border-radius: 12px;
+            padding: 24px 28px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #cdd6f4;
+            overflow-x: auto;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            margin: 48px 0;
+            max-width: 100%;
+        }
+
+        .code-screenshot.terminal .terminal-bar {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .code-screenshot.terminal .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-screenshot.terminal .terminal-dot.red { background: #ff5f57; }
+        .code-screenshot.terminal .terminal-dot.yellow { background: #febc2e; }
+        .code-screenshot.terminal .terminal-dot.green { background: #28c840; }
+
+        .code-screenshot pre {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: inherit;
+            white-space: pre;
+        }
+
+        .code-screenshot .kw { color: #cba6f7; }
+        .code-screenshot .fn { color: #89b4fa; }
+        .code-screenshot .str { color: #a6e3a1; }
+        .code-screenshot .cm { color: #6c7086; }
+        .code-screenshot .bug { color: #f38ba8; }
+        .code-screenshot .ok { color: #a6e3a1; }
+        .code-screenshot .prompt { color: #89b4fa; }
+
+        .code-screenshot .bug-underline {
+            text-decoration: wavy underline #f38ba8;
+            text-underline-offset: 3px;
+        }
+
+        .code-screenshot-caption {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--gray-400);
+            margin-top: -36px;
+            margin-bottom: 40px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* === PULL QUOTE === */
+        .pull-quote {
+            margin: 48px 0;
+            padding: 24px 0 24px 28px;
+            border-left: 4px solid var(--red);
+        }
+
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px !important;
+            font-style: italic;
+            color: var(--navy) !important;
+            line-height: 1.5 !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* === TIP CARDS (stacked list) === */
+        .tips-list {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .tip-card {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 28px 32px;
+        }
+
+        .tip-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .tip-num {
+            background: var(--navy);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .tip-card-header h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.3;
+        }
+
+        .tip-card p {
+            font-size: 16px !important;
+            line-height: 1.7 !important;
+            color: var(--gray-600);
+            margin-bottom: 0 !important;
+        }
+
+        /* === HUMOR CAPTION === */
+        .humor-caption {
+            font-family: 'JetBrains Mono', monospace !important;
+            font-size: 13px !important;
+            color: var(--gray-400) !important;
+            text-align: center;
+            margin-top: -32px !important;
+            margin-bottom: 48px !important;
+        }
+
+        /* === FOOTER === */
+        .site-footer {
+            background: var(--navy);
+            padding: 48px 24px;
+            text-align: center;
+        }
+
+        .site-footer .logo-footer {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .site-footer .logo-footer span {
+            color: var(--red);
+        }
+
+        .site-footer p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--gray-400);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            .article-hero {
+                padding: 56px 24px 72px;
+            }
+
+            .article-hero h1 {
+                font-size: clamp(30px, 7vw, 42px);
+            }
+
+            .article-section p {
+                font-size: 16px;
+            }
+
+            .article-section p.lead {
+                font-size: 19px;
+            }
+
+            .article-section h2 {
+                font-size: 26px;
+            }
+
+            .emphasis {
+                font-size: 18px !important;
+            }
+
+            .pull-quote p {
+                font-size: 19px !important;
+            }
+
+            .quote-band {
+                padding: 48px 0;
+            }
+
+            .quote-band blockquote {
+                font-size: 19px;
+            }
+
+            .quote-band .big-quote-mark {
+                font-size: 80px;
+            }
+
+            .article-image img {
+                border-radius: 4px;
+            }
+
+            .site-nav { gap: 20px; }
+            .read-time { display: none; }
+
+            .tip-card {
+                padding: 22px 22px 20px;
+            }
+
+            .code-screenshot {
+                font-size: 11px;
+                padding: 18px 16px;
+                border-radius: 8px;
+            }
+
+            .separator {
+                margin: 36px 0;
+            }
+
+            .humor-caption {
+                margin-top: -24px !important;
+            }
+
+            .code-screenshot-caption {
+                margin-top: -28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="../../index.html" class="site-logo">room<span>/</span>404</a>
+            <nav class="site-nav">
+                <a href="../../index.html" class="active">Articles</a>
+                <a href="../../about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="article-hero">
+        <div class="article-hero-inner">
+            <span class="article-tag">Opinion</span>
+            <h1>The Craft Was Never About the Code</h1>
+            <p class="article-subtitle">On AI, identity, and what makes an engineer irreplaceable</p>
+            <div class="article-meta">
+                <div class="author-avatar">SD</div>
+                <div class="author-info">
+                    <div class="author-name">Author Name</div>
+                    <div class="article-date">March 2026</div>
+                </div>
+                <div class="read-time">10 min read</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTICLE -->
+    <article>
+
+        <!-- OPENING -->
+        <section class="article-section">
+            <div class="content-wrap">
+
+                <p class="lead"><strong>AI will not replace software engineers.</strong></p>
+
+                <p>That's what people keep telling me. And it's what I've been trying to tell myself for a while now.</p>
+
+                <p>The problem is &mdash; I don't think it's true.</p>
+
+                <p>I hope I'm wrong. I hope that in ten years we'll all look back at this and laugh. But right now, nobody's laughing. I'm still untangling race conditions and debugging memory leaks while AI is out there building full-stack applications from a paragraph of text. Or whatever you want to call it.</p>
+
+                <p>What bothers me the most is something I never thought I'd have to deal with. I now look at a piece of code and I have to ask myself: did someone actually <em>build</em> this, or did they just ask a machine to generate it?</p>
+
+                <p class="emphasis">The fact that I have to ask myself that. For the rest of my career.</p>
+
+                <p>I don't have words for that.</p>
+
+                <p>Actually, I do have a few. But let me start somewhere else first.</p>
+
+                <div class="separator"><span>&bull; &bull; &bull;</span></div>
+
+                <figure class="article-image">
+                    <img src="https://images.unsplash.com/photo-1770159116807-9b2a7bb82294?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=srgb&w=1360" alt="Developer working late at night, laptop glowing in the dark" />
+                    <figcaption>The moments that made us who we are happened when nobody was watching.</figcaption>
+                </figure>
+
+                <p>For the first time in my career, I feel like the ground underneath me is moving in a direction I can't fully control. And I'll be honest with you &mdash; even after two decades of building software, even after surviving multiple recessions, the dot-com crash, and every industry upheaval in between &mdash; I feel insecure. And not the kind of insecurity where you question your last pull request. The kind where you lie awake wondering if the thing you've spent your entire adult life getting good at might just... not matter anymore. At least not in the way it used to.</p>
+
+                <p>The pace at which things are moving makes it hard to even catch up, let alone stay ahead. What I learn about AI tools this month might be obsolete next month. That's a strange and lonely feeling for someone who's always been able to learn their way out of any challenge.</p>
+
+                <p>But I'm not writing this to add more fear to a room that already has plenty. I think we've all had enough of that. I'm writing this because I've spent the last year watching, thinking, and trying to understand &mdash; and I think there are things worth saying. Especially to people like us. People who build things.</p>
+
+
+            </div>
+        </section>
+
+        <!-- WHY WE FELL IN LOVE WITH THIS -->
+        <section class="article-section">
+            <div class="content-wrap">
+
+                <h2>Why We Fell in Love With This</h2>
+
+                <p>Let me take you back for a moment.</p>
+
+                <p>Do you remember why you got into this? Not the job. Not the salary. The <em>thing</em> that got you.</p>
+
+                <p>For me, it was a random weekend in New York City, back in 2006. I was working at Thomson Reuters on a product called Case Law &mdash; a research tool for law firms. I was out with a friend, and there was a guy with us I'd never met. We started chatting, and he mentioned he was a lawyer. I casually asked if he'd ever used Case Law.</p>
+
+                <p>He looked at me like I'd asked if he'd ever used oxygen. <em>"Hell yes. It's like Google for us. Every lawyer uses it."</em></p>
+
+                <p>I told him I was on the team that built it. He just stared at me. <em>"For real? Man, that is awesome. You guys are making our life so easy."</em></p>
+
+                <p>That moment. Standing on a sidewalk in New York, hearing a complete stranger tell you that the thing you helped build &mdash; the thing you stayed late debugging, the thing you argued about in code reviews, the thing that sometimes felt like it would never ship &mdash; was making a real difference in someone's life. That it <em>mattered</em>.</p>
+
+                <p class="emphasis">I was hooked. Not on code. On that feeling.</p>
+
+                <p>It was never about writing code. Code was just the medium. What I actually fell in love with was thinking. The act of taking something messy and ambiguous, breaking it down, understanding the constraints, and building something that works. Something elegant. Something that solves a real problem for a real person.</p>
+
+                <p>You can't shortcut that kind of understanding. It comes from years of getting things wrong, learning why, and getting them right the next time. Every shortcut you didn't take, every difficult problem you sat with instead of walking away from &mdash; that's what made you who you are as an engineer.</p>
+
+                <p class="emphasis">The work is the point.</p>
+
+            </div>
+        </section>
+
+        <!-- BHAGAVAD GITA QUOTE BAND -->
+        <section class="quote-band">
+            <div class="quote-band-inner">
+                <span class="big-quote-mark">&ldquo;</span>
+                <blockquote>कर्मण्येवाधिकारस्ते मा फलेषु कदाचन<br/>You have the right to your labor, but not to the fruits of your labor.</blockquote>
+                <cite>&mdash; <strong>Bhagavad Gita</strong>, Chapter 2, Verse 47</cite>
+            </div>
+        </section>
+
+        <!-- WHAT AI CHANGES -->
+        <section class="article-section">
+            <div class="content-wrap">
+
+                <p>Three thousand years before anyone worried about AI, the Gita had the answer. The work is the point. Not the output. Not the reward. The act of doing it with everything you have.</p>
+
+                <h2>What AI Changes</h2>
+
+                <p>Here's where it gets uncomfortable.</p>
+
+                <p>With AI, you can skip all of that. You can generate a working application without understanding a single line of what's underneath. No struggle. No debugging journey. No deep understanding earned through failure. You describe what you want, and it appears.</p>
+
+                <p>I've watched people with no engineering background build in minutes what used to take experienced teams days. And some of it is genuinely good. That's the part that's hard to say out loud after you've spent your whole career earning your craft the slow way.</p>
+
+                <figure class="article-image">
+                    <img src="images/openclaw.jpg" alt="OpenClaw AI bot beating a human player — Game Over screen showing the bot scored 18 to the human's 16" />
+                    <figcaption>An AI bot competing with humans in real-time. Not just writing code — playing to win.</figcaption>
+                </figure>
+
+                <p>There's a term people use now &mdash; <em>vibe coding</em>. You talk to the machine, it writes the code, you look at the output, you adjust your prompt, and you keep going until it works. No one reads the code. No one needs to understand it. It just... works. Usually. For now.</p>
+
+                <div class="code-screenshot terminal">
+                    <div class="terminal-bar">
+                        <div class="terminal-dot red"></div>
+                        <div class="terminal-dot yellow"></div>
+                        <div class="terminal-dot green"></div>
+                    </div>
+<pre><span class="prompt">$</span> claude <span class="str">"Build me a full-stack todo app with auth,
+  real-time sync, and deploy to production"</span>
+
+&#9695; Thinking...
+
+<span class="ok">&#10003; Created Next.js project with TypeScript</span>
+<span class="ok">&#10003; Added Prisma schema with User and Todo models</span>
+<span class="ok">&#10003; Implemented NextAuth with GitHub OAuth</span>
+<span class="ok">&#10003; Built 12 API endpoints</span>
+<span class="ok">&#10003; Added WebSocket real-time sync</span>
+<span class="ok">&#10003; Wrote 47 tests (all passing)</span>
+<span class="ok">&#10003; Deployed to Vercel</span>
+
+Done in 4 minutes 32 seconds.</pre>
+                </div>
+                <p class="code-screenshot-caption">Four minutes. What used to take a team a week.</p>
+
+                <p class="humor-caption">Narrator: It did not, in fact, work.</p>
+
+                <p>The gap between "someone who built this" and "someone who prompted this into existence" is shrinking. And if you're a client or a business that just wants the thing to work &mdash; you might not care how it got there. I get it. That's rational.</p>
+
+                <p>But it strips away everything that made this craft meaningful to the people who practice it.</p>
+
+                <p>A year ago, I probably would have said something dismissive &mdash; <em>AI code sucks, it'll never match a real engineer</em>. But saying that doesn't hold any weight anymore. In order to really know where it falls short, I had to use it. And the more I used it, the more I realized how good it actually was. In some areas, it was better than me.</p>
+
+                <p class="emphasis">That was a hard day. I sat with that for a while.</p>
+
+                <div class="code-screenshot">
+<pre><span class="cm">// Prompt: "check if user is old enough to sign up"</span>
+<span class="cm">// What a human would write:</span>
+<span class="cm">// const isEligible = user.age >= 18;</span>
+
+<span class="cm">// What AI wrote:</span>
+<span class="kw">const</span> <span class="fn">validateEligibility</span> = <span class="fn">pipe</span>(
+  <span class="fn">extractUserMetadata</span>,
+  <span class="fn">normalizeAgeField</span>({
+    <span class="str">timezone</span>: <span class="fn">Intl</span>.<span class="fn">DateTimeFormat</span>().<span class="fn">resolvedOptions</span>().timeZone,
+    <span class="str">calendar</span>: <span class="str">'iso8601'</span>,
+    <span class="str">roundingMode</span>: <span class="str">'floor'</span>,
+  }),
+  <span class="fn">applyComplianceRules</span>(<span class="fn">getRegionalConfig</span>()),
+  <span class="fn">memoize</span>({ <span class="str">ttl</span>: <span class="str">3600</span>, <span class="str">key</span>: <span class="str">'eligibility'</span> }),
+  <span class="fn">validateAgainstSchema</span>(<span class="str">EligibilitySchema</span>),
+  <span class="fn">tap</span>(result =&gt; <span class="fn">logger</span>.<span class="fn">info</span>(<span class="str">'Eligibility computed'</span>, result)),
+);
+
+<span class="cm">// Works perfectly. Ships to production.</span>
+<span class="cm">// Breaks 3 months later when someone changes</span>
+<span class="cm">// getRegionalConfig() and nobody understands</span>
+<span class="cm">// why sign-ups stopped working in Europe.</span>
+<span class="cm">//</span>
+<span class="cm">// The fix took 2 days. The original check</span>
+<span class="cm">// would have been one line.</span></pre>
+                </div>
+                <p class="code-screenshot-caption">It works. It's clever. And when it breaks, nobody knows why.</p>
+
+                <p>I'm not saying any of this to be bitter. I'm saying it because I think we need to be honest about what's happening before we can talk about what to do about it.</p>
+
+            </div>
+        </section>
+
+        <!-- WHY THIS TIME IS DIFFERENT -->
+        <section class="article-section">
+            <div class="content-wrap">
+
+                <h2>Why This Time Is Different</h2>
+
+                <p>I've been through every wave. Desktop to web. The mobile explosion. Cloud migration. The SaaS era. Every single one of those shifts needed <em>more</em> engineers. They expanded the surface area of what software could do, and we were the ones who had to figure out how to build it.</p>
+
+                <p class="emphasis">This wave is different. It doesn't need more of us. It might need fewer.</p>
+
+                <p>Projects that used to require a team of ten can now be done by three people and a handful of AI tools. That's not a prediction &mdash; that's happening right now, in companies all around us. And the bar for "good enough" output is dropping fast.</p>
+
+                <p>That's not something I say lightly, and I'm not saying it to scare anyone &mdash; I think we've all scared ourselves enough already. I'm saying it because pretending otherwise doesn't help anyone. And because I think there are real things we can do about it.</p>
+
+                <p>So let me tell you what I've been doing.</p>
+
+                <h2>What I'm Doing About It</h2>
+
+                <div class="tips-list">
+                    <div class="tip-card">
+                        <div class="tip-card-header">
+                            <span class="tip-num">1</span>
+                            <h3>Expand Your Skill Tree</h3>
+                        </div>
+                        <p>The era of "I'm a React developer" or "I'm a .NET backend engineer" is coming to an end. If your entire identity is tied to one framework, you're standing on a shrinking island. Learn systems design, product thinking, infrastructure. The more complete you become as a builder, the harder you are to replace &mdash; by AI or by anyone else. And if you already have a broad skill set, start sharing what you know. Teach others. Become the person people come to not just for code reviews, but for <em>thinking</em>.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-card-header">
+                            <span class="tip-num">2</span>
+                            <h3>Know What AI Can and Cannot Do</h3>
+                        </div>
+                        <p>Use the tools. Push them. Find the edges &mdash; because the edges are where your value lives. AI-generated code often works until it doesn't, and when it doesn't, nobody understands <em>why</em>. Who's responsible when AI-generated code breaks in production at 2 AM? Who debugs it? If you understand the tools deeply enough to answer these questions honestly, you become the most valuable person in the room.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-card-header">
+                            <span class="tip-num">3</span>
+                            <h3>Use AI as a Tool, Not a Replacement</h3>
+                        </div>
+                        <p>I don't want AI to architect my systems. But I absolutely want it helping me move faster on boilerplate, research, exploration, and test scaffolding. AI can touch everything <em>around</em> my work. But the work itself &mdash; the thinking, the trade-offs, the decisions &mdash; that's still me. That's still us. You're still the one driving. You're just driving a faster car.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-card-header">
+                            <span class="tip-num">4</span>
+                            <h3>Lean Into the Problems AI Can't Solve</h3>
+                        </div>
+                        <p>Think about the hardest project you've ever worked on. Not the one with the most lines of code &mdash; the one that was the most <em>confusing</em>. The legacy system nobody understood. The client who said one thing and meant another. No AI could have figured that out &mdash; because the problem was too human. The messier the problem, the safer you are.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-card-header">
+                            <span class="tip-num">5</span>
+                            <h3>Hold On to Your Fundamentals</h3>
+                        </div>
+                        <p>When everyone can generate code, the person who can explain <em>why it's wrong</em> becomes the one everyone needs. Algorithms, data structures, systems thinking, the ability to reason about code without running it &mdash; hold on to those. They might be worth more in five years than they are today.</p>
+                    </div>
+                </div>
+
+                <h2>Humans Find Perfection Boring</h2>
+
+                <p>Here's something nobody in the "AI will replace everything" crowd talks about: humans don't actually want perfection. We find it boring. Uncanny. Forgettable.</p>
+
+                <p>Hemingway wrote forty-seven different endings for <em>A Farewell to Arms</em> before he found the right one. Michelangelo spent four years on his back painting a ceiling. These weren't shortcuts to greatness &mdash; they were the price of it. The mess, the doubt, the forty-six endings that didn't work &mdash; that's where the magic lives.</p>
+
+                <figure class="article-image">
+                    <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=1360&q=80" alt="Potter's hands shaping clay on a wheel" />
+                    <figcaption>Craft has always required hands, patience, and imperfection.</figcaption>
+                </figure>
+
+            </div>
+        </section>
+
+        <!-- LEONARD COHEN QUOTE BAND -->
+        <section class="quote-band">
+            <div class="quote-band-inner">
+                <span class="big-quote-mark">&ldquo;</span>
+                <blockquote>There is a crack in everything. That's how the light gets in.</blockquote>
+                <cite>&mdash; <strong>Leonard Cohen</strong></cite>
+            </div>
+        </section>
+
+        <!-- WHAT GREATNESS LOOKS LIKE NOW -->
+        <section class="article-section">
+            <div class="content-wrap">
+
+                <p>When everything looks the same, talks the same, and feels the same &mdash; it loses its value. If every commercial is AI-generated, no commercial stands out. If every website looks like it was prompted into existence, no website feels special. Brands will figure this out. Companies will figure this out. And when they do, they'll come looking for the people who can make things that feel <em>human</em>.</p>
+
+                <figure class="article-image">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1360&q=80" alt="Mountain peak at sunrise" />
+                    <figcaption>The view from the top is earned, never generated.</figcaption>
+                </figure>
+
+                <h2>What Greatness Looks Like Now</h2>
+
+                <p>If you're an engineer reading this and you're feeling overwhelmed &mdash; feeling like the thing you worked so hard to get good at is slipping away from you &mdash; I want you to know that I feel it too. I think every honest engineer does right now. And I think that feeling, as uncomfortable as it is, is actually proof that you care about this craft. People who don't care don't feel this way.</p>
+
+                <p>I think the biggest flex you can have in five years as an engineer is being someone who can <em>actually build things and explain why they work</em>. Not someone who can prompt their way to a demo. Someone who made hard trade-offs intentionally. Who can look at an AI-generated system and say, "This is wrong, and here's why &mdash; and here's what we should do instead."</p>
+
+                <p>That requires something AI can't give you. It requires character. It requires the scars from production incidents and failed projects and systems that fell over at scale. It requires intuition you can't download &mdash; the kind you have to earn.</p>
+
+                <p>Back in 2010, I was made lead developer on a leading search website in the US. There was just one problem: it was the slowest website in our entire company. The previous developer had tried everything and told us it was <em>impossible</em> to make it faster.</p>
+
+                <p>I've always had a thing about the word "impossible." It sounds like an invitation.</p>
+
+                <p>I spent day and night on that website. Six months. Digging into every layer, profiling every query, rethinking every assumption. With the help and guidance of some brilliant people around me, we took it from twelve seconds to two. From the slowest site in the company to the fastest. The client didn't just stay &mdash; they gave us five more projects.</p>
+
+                <p>No AI is going to replicate that feeling. The feeling of proving "impossible" wrong. Of earning it over six months of real work. Because that feeling doesn't come from the output. It comes from the struggle that produced it.</p>
+
+                <div class="pull-quote">
+                    <p>Everything has to cost something in order to be great. You can't have greatness in abundance. That's not how this works.</p>
+                </div>
+
+                <p>If you want to generate applications, fine. If you want to ship features faster with AI, absolutely &mdash; I do too. But if you want to become <em>great</em> &mdash; if you want to be the engineer that people trust with the hardest problems, the one whose opinion actually changes the direction of a project &mdash; you have to be willing to do the hard thing when the easy one is right there.</p>
+
+                <p>Ask yourself, before you hit that generate button: <em>is there any way I can think through this myself? Is there any way I can challenge myself to understand this deeply, not just get an answer?</em></p>
+
+                <p>That's when you start making decisions nobody else makes. That's when you build character as an engineer. That's when you earn the kind of trust that no tool can generate for you.</p>
+
+                <div class="separator"><span>&bull; &bull; &bull;</span></div>
+
+                <p class="emphasis">We didn't get into this to take shortcuts.</p>
+
+                <p>We got into this for the process. For the feeling of figuring something out that nobody but us could figure out. For that stranger on a New York sidewalk telling you <em>you guys are making our life so easy</em>. For taking something "impossible" and making it the fastest thing in the building.</p>
+
+                <p class="emphasis">That hasn't changed. And I don't think it ever will.</p>
+
+                <div style="text-align: center; margin-top: 48px; padding-top: 8px;">
+                    <p style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--gray-600); font-style: italic; line-height: 1.6; margin-bottom: 1.5em;">The people who keep thinking, keep learning, and keep choosing the hard path over the easy one? They're going to be just fine.</p>
+
+                    <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: var(--gray-400); margin-bottom: 0;">And if you're still not sure &mdash; that's okay. The fact that you care enough to wonder already puts you ahead.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </article>
+
+    <!-- FOOTER -->
+    <div style="height: 64px;"></div>
+    <footer class="site-footer">
+        <p class="logo-footer">room<span>/</span>404</p>
+        <p>The page that doesn't exist. Until it does.</p>
+    </footer>
+
+</body>
+</html>
