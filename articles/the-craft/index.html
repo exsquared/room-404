@@ -704,7 +704,9 @@
 
                 <p>There's a term people use now &mdash; <em>vibe coding</em>. You talk to the machine, it writes the code, you look at the output, you adjust your prompt, and you keep going until it works. No one reads the code. No one needs to understand it. It just... works. Usually. For now.</p>
 
-                <p>I'll tell you how far it's gone for me. There have been times I needed to hit a crazy deadline for a proof of concept, and I had AI agents writing code for me <em>while I was driving</em>. I'd glance over and watch what the LLM was thinking, what it was building, and only step in when it started going in the wrong direction. I've become less of a writer and more of an observer &mdash; a supervisor of machines that build things. And that shift happened so gradually I almost didn't notice it.</p>
+                <p>I'd been hearing for years that AI can write code. But I only truly started using it two months ago, when I had to build a proof of concept with a timeline that was, frankly, insane. It wouldn't have been possible without LLM support. And once I started, I couldn't stop.</p>
+
+                <p>There were days I had AI agents writing code for me <em>while I was driving</em>. I'd glance over and watch what the LLM was thinking, what it was building, and only step in when it started going in the wrong direction. I've become less of a writer and more of an observer &mdash; a supervisor of machines that build things. And that shift happened so gradually I almost didn't notice it.</p>
 
                 <div class="code-screenshot terminal">
                     <div class="terminal-bar">
@@ -730,6 +732,17 @@ Done in 4 minutes 32 seconds.</pre>
                 <p class="code-screenshot-caption">Four minutes. What used to take a team a week.</p>
 
                 <p class="humor-caption">Narrator: It did not, in fact, work.</p>
+
+            </div>
+        </section>
+
+        <!-- BUT THERE'S A CATCH -->
+        <section class="article-section">
+            <div class="content-wrap">
+
+                <h2>But There's a Catch</h2>
+
+                <p>Here's what nobody shows you in the demos.</p>
 
                 <div class="code-screenshot">
 <pre><span class="cm">// Prompt: "check if user is old enough to sign up"</span>
@@ -761,6 +774,8 @@ Done in 4 minutes 32 seconds.</pre>
                 <p class="code-screenshot-caption">It works. It's clever. And when it breaks, nobody knows why.</p>
 
                 <p>I've seen this pattern over and over. AI agents don't just write clever code &mdash; they take shortcuts. They deviate from standards. They skip edge cases. They'll find the path of least resistance, just like we do. It turns out AI agents can be just as lazy as the humans who built them.</p>
+
+                <p>I still don't trust them to write production-level code. Not fully. They'll over-engineer something that should be one line. They'll implement things the lazy way when you're not watching. They'll build something that passes every test but crumbles the moment a real user does something unexpected.</p>
 
                 <p>I'm not saying any of this to be bitter. I'm saying it because I think we need to be honest about what's happening before we can talk about what to do about it.</p>
 
@@ -873,13 +888,17 @@ Done in 4 minutes 32 seconds.</pre>
 
                 <p>That requires something AI can't give you. It requires character. It requires the scars from production incidents and failed projects and systems that fell over at scale. It requires intuition you can't download &mdash; the kind you have to earn.</p>
 
-                <p>Back in 2010, I was made lead developer on a leading search website in the US. There was just one problem: it was the slowest website in our entire company. The previous developer had tried everything and told us it was <em>impossible</em> to make it faster.</p>
+                <p>Remember that proof of concept I mentioned &mdash; the one with the insane timeline? Here's what actually made it work. It wasn't the AI. It was the weeks before I ever opened a terminal.</p>
 
-                <p>I've always had a thing about the word "impossible." It sounds like an invitation.</p>
+                <p>I went to the customer. I sat with them. I spent time understanding their process &mdash; how they actually worked, not how they said they worked. I asked questions. A lot of questions. Sometimes the same questions multiple times, because the answer changed when they thought about it harder. I did my own research. I mapped out edge cases they hadn't thought of yet. I built a mental model of what this system needed to be before a single line of code existed.</p>
 
-                <p>I spent day and night on that website. Six months. Digging into every layer, profiling every query, rethinking every assumption. With the help and guidance of some brilliant people around me, we took it from twelve seconds to two. From the slowest site in the company to the fastest. The client didn't just stay &mdash; they gave us five more projects.</p>
+                <p>And <em>then</em> I let the AI build it. With me guiding every decision, every architecture choice, every trade-off. The AI wrote the code. But I wrote the <em>thinking</em>.</p>
 
-                <p>No AI is going to replicate that feeling. The feeling of proving "impossible" wrong. Of earning it over six months of real work. Because that feeling doesn't come from the output. It comes from the struggle that produced it.</p>
+                <p>When we showed it to the CIO, he was blown away. He said it was way more than a POC &mdash; it felt like a real product. And it did. Not because the AI was good at generating code, but because a human had done the hard work of understanding what actually needed to be built.</p>
+
+                <p>If I had just asked an LLM to "build me a care management platform" and walked away? It would have been a disaster. A beautiful, functional, completely wrong disaster.</p>
+
+                <p>No AI is going to replicate that feeling. The feeling of sitting with a customer long enough to understand what they actually need. Of earning their trust. Of building something that makes them say <em>"this is exactly what we needed."</em> Because that feeling doesn't come from the output. It comes from the work that happened before the first line of code.</p>
 
                 <div class="pull-quote">
                     <p>Everything has to cost something in order to be great. You can't have greatness in abundance. That's not how this works.</p>
@@ -891,7 +910,7 @@ Done in 4 minutes 32 seconds.</pre>
 
                 <p class="emphasis">We didn't get into this to take shortcuts.</p>
 
-                <p>We got into this for the process. For that feeling. The one you got on a sidewalk in New York when a stranger told you your work mattered. The one you got after six months of proving "impossible" wrong. The one no machine can generate, because it only comes from doing something hard and knowing it was <em>you</em>.</p>
+                <p>We got into this for the process. For that feeling. The one you got on a sidewalk in New York when a stranger told you your work mattered. The one you got when a CIO looked at your POC and said it was way more than he expected. The one no machine can generate, because it only comes from doing something hard and knowing it was <em>you</em>.</p>
 
                 <p class="emphasis">That hasn't changed. And I don't think it ever will.</p>
 
