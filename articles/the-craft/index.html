@@ -157,6 +157,18 @@
             font-weight: 500;
         }
 
+        .author-coauthor {
+            font-weight: 400;
+            color: var(--gray-400);
+        }
+
+        .author-coauthor-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--gray-400);
+        }
+
         .article-date {
             color: var(--gray-400);
             margin-top: 2px;
@@ -233,18 +245,28 @@
             margin-top: 0;
         }
 
+        .article-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-top: 40px;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
         /* === EMPHASIS TEXT === */
         .emphasis {
             font-family: 'Playfair Display', serif !important;
             font-size: 20px !important;
-            color: var(--navy) !important;
+            color: var(--gray-800) !important;
             font-weight: 700;
         }
 
         /* === SEPARATOR === */
         .separator {
             text-align: center;
-            margin: 56px 0;
+            margin: 40px 0;
             display: flex;
             align-items: center;
             gap: 20px;
@@ -357,7 +379,7 @@
             color: #cdd6f4;
             overflow-x: auto;
             box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-            margin: 48px 0;
+            margin: 48px 0 12px 0;
             max-width: 100%;
         }
 
@@ -403,8 +425,8 @@
             font-family: 'Inter', sans-serif;
             font-size: 14px;
             color: var(--gray-400);
-            margin-top: -36px;
-            margin-bottom: 40px;
+            margin-top: 0;
+            margin-bottom: 48px;
             font-style: italic;
             text-align: center;
         }
@@ -420,7 +442,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 22px !important;
             font-style: italic;
-            color: var(--navy) !important;
+            color: var(--gray-800) !important;
             line-height: 1.5 !important;
             margin-bottom: 0 !important;
         }
@@ -481,8 +503,46 @@
             font-size: 13px !important;
             color: var(--gray-400) !important;
             text-align: center;
-            margin-top: -32px !important;
+            margin-top: -4px !important;
             margin-bottom: 48px !important;
+        }
+
+        /* === CLOSING SIGN-OFF === */
+        .closing-signoff {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        .closing-signoff .closing-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--gray-600);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1.5em;
+        }
+
+        .closing-signoff .closing-final {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: var(--gray-400);
+            margin-bottom: 0;
+        }
+
+        /* === FOOTNOTE === */
+        .article-footnote {
+            max-width: var(--content-width);
+            margin: 48px auto 0;
+            padding: 40px 24px 48px;
+            text-align: center;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .article-footnote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            color: var(--gray-400);
+            font-style: italic;
         }
 
         /* === FOOTER === */
@@ -563,7 +623,19 @@
             .read-time { display: none; }
 
             .tip-card {
-                padding: 22px 22px 20px;
+                padding: 22px;
+            }
+
+            .pull-quote {
+                padding-left: 20px;
+            }
+
+            .article-image {
+                margin: 32px 0;
+            }
+
+            .emphasis {
+                line-height: 1.4 !important;
             }
 
             .code-screenshot {
@@ -573,15 +645,7 @@
             }
 
             .separator {
-                margin: 36px 0;
-            }
-
-            .humor-caption {
-                margin-top: -24px !important;
-            }
-
-            .code-screenshot-caption {
-                margin-top: -28px;
+                margin: 28px 0;
             }
         }
     </style>
@@ -608,7 +672,7 @@
             <div class="article-meta">
                 <div class="author-avatar">SD</div>
                 <div class="author-info">
-                    <div class="author-name">Sahil Dhawan <span style="font-weight: 400; color: #86868b;">&amp;</span> Claude <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 400; color: #86868b;">(Anthropic)</span></div>
+                    <div class="author-name">Sahil Dhawan <span class="author-coauthor">&amp;</span> Claude <span class="author-coauthor-label">(Anthropic)</span></div>
                     <div class="article-date">March 2026</div>
                 </div>
                 <div class="read-time">10 min read</div>
@@ -920,10 +984,9 @@ Done in 4 minutes 32 seconds.</pre>
 
                 <p class="emphasis">That hasn't changed. And I don't think it ever will.</p>
 
-                <div style="text-align: center; margin-top: 48px; padding-top: 8px;">
-                    <p style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--gray-600); font-style: italic; line-height: 1.6; margin-bottom: 1.5em;">The people who keep thinking, keep learning, and keep choosing the hard path over the easy one? They're going to be just fine.</p>
-
-                    <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: var(--gray-400); margin-bottom: 0;">And if you're still not sure &mdash; that's okay. The fact that you care enough to wonder already puts you ahead.</p>
+                <div class="closing-signoff">
+                    <p class="closing-main">The people who keep thinking, keep learning, and keep choosing the hard path over the easy one? They're going to be just fine.</p>
+                    <p class="closing-final">And if you're still not sure — that's okay. The fact that you care enough to wonder already puts you ahead.</p>
                 </div>
 
             </div>
@@ -932,8 +995,8 @@ Done in 4 minutes 32 seconds.</pre>
     </article>
 
     <!-- FOOTNOTE -->
-    <div style="max-width: 680px; margin: 0 auto; padding: 0 24px 48px; text-align: center; border-top: 1px solid #e8e8ed; margin-top: 32px; padding-top: 40px;">
-        <p style="font-family: 'Playfair Display', serif; font-size: 14px; color: #86868b; font-style: italic;">Yes, I used AI to help write an article about not letting AI replace us. I see the irony.</p>
+    <div class="article-footnote">
+        <p>Yes, I used AI to help write an article about not letting AI replace us. I see the irony.</p>
     </div>
 
     <!-- FOOTER -->
