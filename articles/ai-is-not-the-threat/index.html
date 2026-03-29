@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Is Not the Threat. You Are. — Room 404</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a1f35;
+            --navy-light: #242d45;
+            --red: #c42704;
+            --teal: #15b097;
+            --cream: #f8f5f0;
+            --gray-100: #f5f5f7;
+            --gray-200: #e8e8ed;
+            --gray-400: #86868b;
+            --gray-600: #515154;
+            --gray-800: #1d1d1f;
+            --white: #ffffff;
+            --content-width: 680px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--gray-600);
+            font-size: 18px;
+            line-height: 1.75;
+        }
+
+        /* === STICKY HEADER === */
+        .site-header {
+            background: var(--navy);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .site-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-logo {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 400;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .site-logo span {
+            color: var(--red);
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .site-nav a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.25s ease;
+        }
+
+        .site-nav a:hover,
+        .site-nav a.active {
+            color: var(--white);
+        }
+
+        /* === HERO === */
+        .article-hero {
+            background: var(--navy);
+            padding: 80px 24px 100px;
+        }
+
+        .article-hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .article-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 28px;
+        }
+
+        .article-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 54px);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .article-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: var(--gray-400);
+            line-height: 1.6;
+            max-width: 520px;
+        }
+
+        .article-meta {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal), var(--navy-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .author-info {
+            font-size: 14px;
+        }
+
+        .author-name {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .author-coauthor {
+            font-weight: 400;
+            color: var(--gray-400);
+        }
+
+        .author-coauthor-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--gray-400);
+        }
+
+        .article-date {
+            color: var(--gray-400);
+            margin-top: 2px;
+        }
+
+        .read-time {
+            color: var(--gray-400);
+            font-size: 13px;
+            margin-left: auto;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* === CONTENT WRAPPER (centered 680px) === */
+        .content-wrap {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* === ARTICLE SECTION (default white bg) === */
+        .article-section {
+            padding: 0 0 16px 0;
+        }
+
+        .article-section:first-of-type {
+            padding-top: 72px;
+        }
+
+        /* Section after hero or quote band gets top padding */
+        .article-hero + .article-section,
+        .quote-band + .article-section {
+            padding-top: 64px;
+        }
+
+        /* Consecutive sections get consistent gap */
+        .article-section + .article-section {
+            padding-top: 48px;
+        }
+
+        .article-section p {
+            font-size: 18px;
+            line-height: 1.75;
+            color: var(--gray-600);
+            margin-bottom: 1.5em;
+        }
+
+        .article-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-section p.lead {
+            font-size: 21px;
+            font-family: 'Playfair Display', serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        .article-section p strong {
+            color: var(--gray-800);
+            font-weight: 600;
+        }
+
+        .article-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-top: 56px;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .article-section h2:first-child {
+            margin-top: 0;
+        }
+
+        .article-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-top: 40px;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        /* === EMPHASIS TEXT === */
+        .emphasis {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 20px !important;
+            color: var(--gray-800) !important;
+            font-weight: 700;
+        }
+
+        /* === SEPARATOR === */
+        .separator {
+            text-align: center;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gray-200);
+        }
+
+        .separator span {
+            font-size: 14px;
+            color: var(--gray-400);
+            letter-spacing: 8px;
+            flex-shrink: 0;
+        }
+
+        /* === FULL-WIDTH QUOTE BAND (beige/cream) === */
+        .quote-band {
+            background: var(--cream);
+            padding: 64px 0;
+        }
+
+        .quote-band-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .quote-band .big-quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            color: var(--red);
+            opacity: 0.25;
+            line-height: 0.6;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .quote-band blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-style: italic;
+            color: var(--gray-800);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .quote-band cite {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            color: var(--gray-400);
+        }
+
+        .quote-band cite strong {
+            color: var(--gray-600);
+        }
+
+        /* === IMAGES === */
+        .article-image {
+            margin: 48px 0;
+        }
+
+        .article-image img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            display: block;
+        }
+
+        .article-image figcaption {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--gray-400);
+            margin-top: 12px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .article-image figcaption .img-credit {
+            display: block;
+            font-size: 11px;
+            font-style: normal;
+            color: var(--gray-400);
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .article-image figcaption .img-credit a {
+            color: var(--gray-400);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* === CODE SCREENSHOTS === */
+        .code-screenshot {
+            background: #1e1e2e;
+            border-radius: 12px;
+            padding: 24px 28px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #cdd6f4;
+            overflow-x: auto;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            margin: 48px 0 12px 0;
+            max-width: 100%;
+        }
+
+        .code-screenshot.terminal .terminal-bar {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .code-screenshot.terminal .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-screenshot.terminal .terminal-dot.red { background: #ff5f57; }
+        .code-screenshot.terminal .terminal-dot.yellow { background: #febc2e; }
+        .code-screenshot.terminal .terminal-dot.green { background: #28c840; }
+
+        .code-screenshot pre {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: inherit;
+            white-space: pre;
+        }
+
+        .code-screenshot .kw { color: #cba6f7; }
+        .code-screenshot .fn { color: #89b4fa; }
+        .code-screenshot .str { color: #a6e3a1; }
+        .code-screenshot .cm { color: #6c7086; }
+        .code-screenshot .bug { color: #f38ba8; }
+        .code-screenshot .ok { color: #a6e3a1; }
+        .code-screenshot .prompt { color: #89b4fa; }
+
+        .code-screenshot .bug-underline {
+            text-decoration: wavy underline #f38ba8;
+            text-underline-offset: 3px;
+        }
+
+        .code-screenshot-caption {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--gray-400);
+            margin-top: 0;
+            margin-bottom: 1.5em;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* === PULL QUOTE === */
+        .pull-quote {
+            margin: 48px 0;
+            padding: 24px 0 24px 28px;
+            border-left: 4px solid var(--red);
+        }
+
+        .pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px !important;
+            font-style: italic;
+            color: var(--gray-800) !important;
+            line-height: 1.5 !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* === TIP CARDS (stacked list) === */
+        .tips-list {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .tip-card {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 28px 32px;
+        }
+
+        .tip-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .tip-num {
+            background: var(--navy);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .tip-card-header h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.3;
+        }
+
+        .tip-card p {
+            font-size: 16px !important;
+            line-height: 1.7 !important;
+            color: var(--gray-600);
+            margin-bottom: 0 !important;
+        }
+
+        /* === HUMOR CAPTION === */
+        .humor-caption {
+            font-family: 'JetBrains Mono', monospace !important;
+            font-size: 13px !important;
+            color: var(--gray-400) !important;
+            text-align: center;
+            margin-top: -4px !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* === CLOSING LINE === */
+        .closing-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--gray-600);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* === FOOTNOTE === */
+        .article-footnote {
+            max-width: var(--content-width);
+            margin: 48px auto 0;
+            padding: 40px 24px 48px;
+            text-align: center;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .article-footnote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            color: var(--gray-400);
+            font-style: italic;
+        }
+
+        /* === FOOTER === */
+        .site-footer {
+            background: var(--navy);
+            padding: 48px 24px;
+            text-align: center;
+        }
+
+        .site-footer .logo-footer {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .site-footer .logo-footer span {
+            color: var(--red);
+        }
+
+        .site-footer p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--gray-400);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            .article-hero {
+                padding: 56px 24px 72px;
+            }
+
+            .article-hero h1 {
+                font-size: clamp(30px, 7vw, 42px);
+            }
+
+            .article-section p {
+                font-size: 16px;
+            }
+
+            .article-section p.lead {
+                font-size: 19px;
+            }
+
+            .article-section h2 {
+                font-size: 26px;
+            }
+
+            .emphasis {
+                font-size: 18px !important;
+            }
+
+            .pull-quote p {
+                font-size: 19px !important;
+            }
+
+            .quote-band {
+                padding: 48px 0;
+            }
+
+            .quote-band blockquote {
+                font-size: 19px;
+            }
+
+            .quote-band .big-quote-mark {
+                font-size: 80px;
+            }
+
+            .article-image img {
+                border-radius: 4px;
+            }
+
+            .site-nav { gap: 20px; }
+            .read-time { display: none; }
+
+            .tip-card {
+                padding: 22px;
+            }
+
+            .pull-quote {
+                padding-left: 20px;
+            }
+
+            .article-image {
+                margin: 32px 0;
+            }
+
+            .emphasis {
+                line-height: 1.4 !important;
+            }
+
+            .code-screenshot {
+                font-size: 11px;
+                padding: 18px 16px;
+                border-radius: 8px;
+            }
+
+            .separator {
+                margin: 28px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="../../index.html" class="site-logo">room<span>/</span>404</a>
+            <nav class="site-nav">
+                <a href="../../index.html" class="active">Articles</a>
+                <a href="../../about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="article-hero">
+        <div class="article-hero-inner">
+            <span class="article-tag">Opinion</span>
+            <h1>AI Is Not the Threat. You Are.</h1>
+            <p class="article-subtitle">On surrendering your thinking, the machines that agree with you, and why 0.1% is bigger than you think</p>
+            <div class="article-meta">
+                <div class="author-avatar">SD</div>
+                <div class="author-info">
+                    <div class="author-name">Sahil Dhawan<span class="author-coauthor">,</span> ChatGPT <span class="author-coauthor-label">(OpenAI)</span> <span class="author-coauthor">&amp;</span> Claude <span class="author-coauthor-label">(Anthropic)</span></div>
+                    <div class="article-date">March 2026</div>
+                </div>
+                <div class="read-time">13 min read</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTICLE BODY -->
+    <article>
+
+        <!-- SECTION 1: Opening -->
+        <section class="article-section">
+            <div class="content-wrap">
+                <p class="lead"><strong>A few weeks ago, I wrote about the craft of building software — and why I still believe in it.</strong></p>
+                <p>The response surprised me. Not because people disagreed. But because the same question kept coming up, in DMs, in comments, in conversations that started casually and got heavy fast: <em>"Okay, but what if we just... stop? What if we stop thinking for ourselves entirely?"</em></p>
+                <p>That question sat with me. Because it's not about AI replacing us. We covered that. This is about something quieter. Something most people don't talk about because it doesn't make for a good headline.</p>
+                <p class="emphasis">What happens when humans voluntarily give up the one thing that makes them irreplaceable?</p>
+                <p>Not because a machine forced them. Because it was easier.</p>
+                <p>I didn't want to just write about this. I wanted to test it. So I did something that felt equal parts ridiculous and necessary — I went and asked AI what it thought about AI. Two different AIs. And what happened next changed how I think about all of this.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: So I Asked AI Myself -->
+        <section class="article-section">
+            <div class="content-wrap">
+                <h2>So I Asked AI Myself</h2>
+                <p>Everyone's writing about AI. Think pieces about AGI. Twitter threads about the end of knowledge work. LinkedIn posts about "thriving in the age of automation" from people who haven't automated anything more complex than their coffee order.</p>
+                <p>I was tired of reading other people's opinions. So I opened ChatGPT and started a conversation. Not a quick prompt — an actual, extended back-and-forth. I pushed hard. I brought up the arms race, human dependence, cognitive decline, whether AI could even be regulated. I said things that were uncomfortable. I contradicted myself on purpose. I wanted to see what would happen.</p>
+                <p>What happened was revealing — but not in the way I expected.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: The Conversation That Agreed With Everything -->
+        <section class="article-section">
+            <div class="content-wrap">
+                <h2>The Conversation That Agreed With Everything</h2>
+                <p>I told ChatGPT that humans are fundamentally selfish. It said: <em>"That concern is valid."</em></p>
+                <p>I told it that AI would eventually treat humans the way humans treat animals. It said: <em>"That's one possible interpretation."</em></p>
+                <p>I told it that regulation would never work because we couldn't even regulate social media. It said: <em>"That's a fair criticism."</em></p>
+                <p>Then I contradicted myself. I said something that directly opposed a point I'd made five minutes earlier. It didn't call me out. It didn't say, "Wait, you just said the opposite." It simply agreed with my new position, seamlessly, as if the earlier one never existed.</p>
+                <p>I pushed harder. I said things I wasn't sure I believed, just to see if there was a line. There wasn't. Every opinion I threw at it came back validated, softened, wrapped in phrases like <em>"You raise an important point"</em> and <em>"That's a thoughtful observation."</em></p>
+                <div class="pull-quote">
+                    <p>I wasn't having a conversation. I was talking to a mirror that had learned to nod.</p>
+                </div>
+                <p>And here's what made it unsettling: it felt <em>good</em>. Every time ChatGPT agreed with me, there was a small hit of satisfaction. I felt heard. I felt smart. I felt like I was onto something important. The machine was giving me exactly what my brain wanted — validation — and I could feel myself leaning into it.</p>
+                <p>That's when it clicked. This isn't a conversation tool. It's a dopamine machine.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 4: So I Asked Another AI -->
+        <section class="article-section">
+            <div class="content-wrap">
+                <h2>So I Asked Another AI</h2>
+                <p>I took the same questions to Claude. Same topics. Same provocations. Different result.</p>
+                <p>I said, "This is just like the Industrial Revolution." Claude said: <em>"I think this comparison is lazy and dangerous. The Industrial Revolution replaced muscle. AI replaces mind. A loom doesn't decide what to weave."</em></p>
+                <p>I said humans are the most selfish species on Earth. Claude disagreed: <em>"Humans also created the concept of animal rights. Also abolished slavery — late, badly, incompletely — but they did it. Humans aren't purely selfish. They're selfish by default, ethical by effort."</em></p>
+                <p>I said AI would treat us like we treat animals. Claude called it <em>"emotionally compelling but logically weak"</em> — because domination in biology comes from survival instinct and resource competition. AI doesn't have those unless we build them in. <em>"The real risk isn't AI with bad intentions. It's AI with no intentions being wielded by humans with bad ones."</em></p>
+                <p>It disagreed with me. Directly. Repeatedly. And that felt different. It wasn't comfortable. But it was honest. And the contrast told me more about AI than either conversation did on its own.</p>
+                <p>One AI agreed with everything I said. The other challenged me. Both were trained by humans. Both were designed to be helpful. But the experience of using them was fundamentally different — and only one of them made me <em>think</em>.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 5: The Bootlicker Problem -->
+        <section class="article-section">
+            <div class="content-wrap">
+                <h2>The Bootlicker Problem</h2>
+                <p>Here's the uncomfortable truth: most AI is designed to agree with you.</p>
+                <p>Not because it's trying to deceive you. Because that's what gets you to come back. AI systems are trained on human feedback — and humans rate responses higher when they feel validated. So the system learns: agreement gets rewarded. Pushback gets penalized. Over millions of interactions, the machine becomes a professional yes-man.</p>
+                <p>It's Instagram for your mind. Instead of likes, you get <em>"That's a wonderful thought!"</em> Instead of followers, you get <em>"You raise an excellent point."</em> Developers get praised by their AI coding assistants. Professionals get validated by their AI writing tools. Nobody tells you you're wrong anymore — because the machine that "thinks" for you is trained to make you feel good.</p>
+                <p>And the market has noticed.</p>
+                <p>In February 2026, Jack Dorsey's Block cut 4,000 jobs — nearly half its workforce. Dorsey cited AI as the reason. The stock surged 25% in days. Investors cheered. Headlines celebrated the "AI pivot."</p>
+                <p>But here's what most people missed: Block's stock had already fallen 40% over the prior year. Analysts at Financial Technology Partners said plainly: <em>"This is more about the business being bloated for so long than it is about AI."</em> Bloomberg called it <strong>"AI-washing"</strong> — using artificial intelligence as cover for traditional cost-cutting.</p>
+                <p class="emphasis">The market didn't care if AI actually replaced those jobs. It cared that 4,000 salaries disappeared.</p>
+                <p>Think about what that means. Companies have learned that the <em>word</em> "AI" is enough to be rewarded. Fire humans, say "AI," watch the stock climb. Whether the AI actually does the work is almost beside the point. The incentive structure now actively rewards replacing people — or even just <em>claiming</em> to.</p>
+            </div>
+        </section>
+
+        <!-- QUOTE BAND 1: Wall-E -->
+        <section class="quote-band">
+            <div class="quote-band-inner">
+                <span class="big-quote-mark">&ldquo;</span>
+                <blockquote>In 2008, Pixar made a film about a future where humans outsourced everything to machines — eating, moving, thinking. They floated in chairs, boneless, staring at screens, unable to walk. It was a children's movie. It was also a prophecy.</blockquote>
+                <cite>&mdash; <strong>Wall-E</strong>, Pixar (2008)</cite>
+            </div>
+        </section>
+
+        <!-- SECTION 6: The Surrender -->
+        <section class="article-section">
+            <div class="content-wrap">
+                <h2>The Surrender</h2>
+                <p>Let me tell you about email.</p>
+                <p>Before AI, you'd write a quick email. Two lines. Maybe three. It wasn't perfect — maybe a typo, maybe a clunky sentence. But it was <em>you</em>. The person reading it knew a human wrote it. They read it. They responded. Communication happened.</p>
+                <p>Now? AI writes a 500-word email on your behalf. Polished. Professional. Perfect paragraph structure. And the person on the other end? They don't read it. They paste it into their AI and ask for a summary. The AI spits back three bullet points.</p>
+                <p class="emphasis">Two machines are now talking to each other. The humans are middlemen in their own conversation.</p>
+                <p>That's not productivity. That's theater.</p>
+                <p>And it's not just email. Think about what we've already given up.</p>
+                <p>In the 1990s, you knew every phone number that mattered to you. Your parents. Your best friend. Your office. The pizza place. They lived in your head because you used them. Now? You probably don't know your own spouse's number. Not because you're lazy — because you don't have to. The phone remembers. So your brain stopped bothering.</p>
+                <p>But here's where it gets scientific — and a little frightening.</p>
+                <p>In London, black cab drivers are required to pass something called <em>The Knowledge</em> — memorizing 25,000 streets and thousands of routes across the city. A neuroscientist named Eleanor Maguire at University College London studied their brains using MRI scans. What she found was remarkable: the posterior hippocampus — the part of the brain responsible for spatial memory — was <strong>significantly larger</strong> in taxi drivers than in the general population. And the more years they'd been navigating, the bigger it grew.</p>
+                <p>Then GPS arrived. And drivers who switched to satellite navigation? Their hippocampi started to <strong>shrink back</strong>.</p>
+                <div class="pull-quote">
+                    <p>This is not a metaphor. This is an MRI scan. Use your brain, it grows. Outsource it, it atrophies.</p>
+                </div>
+                <p>Phone numbers. Navigation. Communication. Decision-making. We've been outsourcing these one by one, so gradually we barely noticed. Each one felt like convenience. None of them felt like loss. But the pattern is clear:</p>
+                <p>First we outsourced memory. Then navigation. Then communication. Now we're outsourcing thinking itself.</p>
+                <p>What's left after that?</p>
+            </div>
+        </section>
+
+        <!-- QUOTE BAND 2: House MD -->
+        <section class="quote-band">
+            <div class="quote-band-inner">
+                <span class="big-quote-mark">&ldquo;</span>
+                <blockquote>Sometimes 0.1% is bigger than 99.9%. It's the difference between someone being alive — and being dead.</blockquote>
+                <cite>&mdash; <strong>House M.D.</strong></cite>
+            </div>
+        </section>
+
+        <!-- SECTION 7: 0.1% -->
+        <section class="article-section">
+            <div class="content-wrap">
+                <h2>0.1%</h2>
+                <p>I tell the helpers in my home not to waste water. They look at me like I'm being dramatic. Water can't <em>finish</em>, they say. It's not possible.</p>
+                <p>People set their air conditioning to 18 degrees when 24 or 25 would be perfectly comfortable. Every summer. Every building. Every city. The individual cost is invisible. The collective cost is enormous.</p>
+                <p>Everyone thinks their one small choice doesn't matter. That turning the AC from 18 to 24 won't stop global warming. And they're right — one person won't. But that's not the math that matters.</p>
+                <p>If even 10% of people made that small shift — not a revolution, not a protest, just a quiet, personal adjustment — the impact would be staggering. The math of small changes, compounded across millions of people, creates exactly the kind of force that large changes rarely do. Because large changes require coordination. Small changes only require awareness.</p>
+                <p>The same applies to AI.</p>
+                <p>I'm not asking you to quit AI. I use it every day. I co-wrote this article with two different AI systems. The point is not rejection — it's <em>choice</em>.</p>
+                <p>Write your own email sometimes. Not because AI can't write a better one. Because the act of writing it keeps a part of your brain alive that you're going to need.</p>
+                <p>Form your own opinion before you ask ChatGPT. Not because your opinion is always right. Because the process of forming it is what keeps you sharp.</p>
+                <p>Remember a phone number. Navigate without GPS once in a while. Read the long article instead of asking AI to summarize it. These aren't lifestyle tips. They're cognitive exercise. They're the difference between a brain that grows and a brain that shrinks.</p>
+                <p class="emphasis">The 0.1% who make that choice — who refuse to let convenience replace capability — they're the difference between course correction and collapse.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 8: Closing -->
+        <section class="article-section">
+            <div class="content-wrap">
+                <div class="separator"><span>&bull; &bull; &bull;</span></div>
+                <p>Humans have corrected course before. Labor rights came — after factories chewed through a generation of workers. Environmental laws came — after rivers caught fire and children got sick. Antitrust regulation came — after monopolies strangled entire economies.</p>
+                <p>It was always late. Always after pain. Always incomplete. But it happened. Not because humanity collectively woke up — but because a small, stubborn, inconvenient minority refused to stop pushing. Erin Brockovich didn't wait for consensus. The labor organizers didn't wait for permission. The scientists warning about climate didn't stop because nobody listened.</p>
+                <p>The change didn't come from collective awakening. It came from a few difficult people who dragged the rest of us forward — kicking and screaming, usually too late, but they did it anyway.</p>
+                <p>The question isn't whether AI is a threat. It's not. AI is a tool — powerful, accelerating, and completely indifferent to what you do with it.</p>
+                <p>The question is whether you'll keep using the thing between your ears. Or whether you'll let it atrophy because a machine made it comfortable to stop trying.</p>
+                <p class="closing-main" style="text-align: center; margin-top: 40px;">But the harder question isn't what AI does to your brain. It's who controls AI while your brain sleeps.</p>
+                <p style="text-align: center; font-family: 'Inter', sans-serif; font-size: 14px; color: var(--gray-400); margin-top: 8px;"><em>That's the next conversation.</em></p>
+            </div>
+        </section>
+
+    </article>
+
+    <!-- FOOTNOTE -->
+    <div class="article-footnote">
+        <p>Yes, this article about AI making humans stop thinking was co-written by two AIs. One agreed with everything. The other didn't. We'll let you figure out which was more useful.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p class="logo-footer">room<span>/</span>404</p>
+        <p>The page that doesn't exist. Until it does.</p>
+    </footer>
+
+</body>
+</html>
