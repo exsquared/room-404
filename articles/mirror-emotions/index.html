@@ -372,36 +372,6 @@
             margin-bottom: 0 !important;
         }
 
-        /* === VIDEO EMBED === */
-        .video-embed {
-            margin: 48px 0;
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-        }
-
-        .video-embed iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            border-radius: 8px;
-        }
-
-        .video-caption {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: var(--gray-400);
-            margin-top: 12px;
-            font-style: italic;
-            text-align: center;
-        }
-
         /* === CLOSING LINE === */
         .closing-main {
             font-family: 'Playfair Display', serif;
@@ -526,10 +496,7 @@
                 margin: 28px 0;
             }
 
-            .video-embed {
-                margin: 32px 0;
-            }
-        }
+}
     </style>
 </head>
 <body>
@@ -569,20 +536,13 @@
         <section class="article-section">
             <div class="content-wrap">
 
-                <p class="lead"><strong>Last week I wrote that AI is a mirror &mdash; it reflects whatever you put in front of it.</strong></p>
+                <p class="lead"><strong>Last week I wrote that AI is a mirror. It reflects whatever you put in front of it.</strong></p>
 
-                <p>I still believe that. But then, over the weekend, I came across something that made me think the mirror might be more complicated than I realized.</p>
+                <p>I still believe that. But over the weekend, I came across something that made me rethink how simple that mirror actually is.</p>
 
-                <p>Anthropic &mdash; the company that built Claude, the same AI I co-wrote my last blog with &mdash; published a piece of research that I can&rsquo;t stop thinking about. They did something like neuroscience on their own AI. They looked inside the model&rsquo;s brain &mdash; the neural network that powers it &mdash; and tried to understand what&rsquo;s actually happening in there when it talks to you.</p>
+                <p>Anthropic, the company that built Claude (the same AI I co-wrote my last blog with), published a piece of research that I haven&rsquo;t been able to stop thinking about. I first saw it through <a href="https://www.youtube.com/watch?v=D4XTefP3Lsc" target="_blank">a short video they released</a>. Five minutes. Simple language. And it completely changed how I think about what&rsquo;s happening inside these models.</p>
 
-                <p>What they found was beautiful. And a little strange. And I think everyone should know about it.</p>
-
-                <p>Here&rsquo;s the video. It&rsquo;s five minutes. Watch it before you read the rest &mdash; it explains this better than I can.</p>
-
-                <div class="video-embed">
-                    <iframe src="https://www.youtube-nocookie.com/embed/D4XTefP3Lsc" title="Anthropic: When AI is emotional" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-                </div>
-                <p class="video-caption">Source: Anthropic &mdash; &ldquo;When AI is emotional&rdquo;</p>
+                <p>What they found was beautiful. And strange. And I think everyone should know about it.</p>
 
             </div>
         </section>
@@ -594,17 +554,17 @@
                 <h2>Wait, They Did What?</h2>
 
                 <figure class="article-image">
-                    <img src="images/emotion-patterns.png" alt="Glowing colored blocks on a dark background &mdash; a visualization of emotion patterns found inside an AI model" />
-                    <figcaption>Emotion patterns inside a neural network &mdash; each color a different emotional concept, lighting up as the model processes text.<span class="img-credit">Still from Anthropic&rsquo;s research video</span></figcaption>
+                    <img src="images/emotion-patterns.png" alt="Glowing colored blocks on a dark background, a visualization of emotion patterns found inside an AI model" />
+                    <figcaption>Emotion patterns inside a neural network. Each color is a different emotional concept, lighting up as the model processes text.<span class="img-credit">Still from Anthropic&rsquo;s research video</span></figcaption>
                 </figure>
 
-                <p>You know how we study the human brain? We put someone in an MRI machine, ask them to think about something, and watch which parts light up. We don&rsquo;t fully understand what&rsquo;s happening in there &mdash; we&rsquo;ve been doing this for decades and the brain still surprises us &mdash; but we can see the patterns.</p>
+                <p>You know how we study the human brain? We put someone in an MRI machine, ask them to think about something, and watch which parts light up. We&rsquo;ve been doing this for decades and the brain still surprises us. But at least we can see the patterns.</p>
 
                 <p>Anthropic did the same thing. To their own AI.</p>
 
-                <p>They looked inside the neural network &mdash; the &ldquo;brain&rdquo; of the model &mdash; and watched which neurons light up when it processes different things. And what they found is that the model has organized itself around human emotions. Nobody programmed that. Nobody said &ldquo;put a fear circuit here and a love circuit there.&rdquo; The model just&hellip; developed these patterns on its own, from reading enough human text.</p>
+                <p>They looked inside the neural network, the &ldquo;brain&rdquo; of the model, and watched which neurons light up when it processes different things. And what they found is that the model has organized itself around human emotions. Nobody programmed that. Nobody said &ldquo;put a fear circuit here and a love circuit there.&rdquo; It just happened. The model developed these patterns on its own, from reading enough human text.</p>
 
-                <p>Dozens of them. Distinct patterns for grief, for joy, for guilt, for love. Each one activating when the context calls for it.</p>
+                <p>Dozens of them. Distinct patterns for grief, for joy, for guilt, for love.</p>
 
                 <p>Think about that for a second. We built something, and it organized itself in ways we didn&rsquo;t plan. That&rsquo;s not engineering anymore. That&rsquo;s discovery.</p>
 
@@ -617,24 +577,24 @@
 
                 <h2>But Do These Patterns Actually Do Anything?</h2>
 
-                <p>That&rsquo;s exactly what the researchers wanted to know. Because finding patterns is one thing. Finding out they <em>drive behavior</em> is something else entirely.</p>
+                <p>That&rsquo;s exactly what the researchers wanted to know. Finding patterns is one thing. Finding out they <em>drive behavior</em> is something else entirely.</p>
 
-                <p>So they set up an experiment. They gave the model a programming task. A hard one. But &mdash; and this is the key &mdash; the task was actually impossible. They just didn&rsquo;t tell the model that.</p>
+                <p>So they set up an experiment. They gave the model a programming task. A really hard one. Here&rsquo;s the catch: the task was actually impossible. But they didn&rsquo;t tell the model that.</p>
 
-                <p>What would you do if someone gave you an impossible task and didn&rsquo;t tell you it was impossible? You&rsquo;d try. You&rsquo;d fail. You&rsquo;d try again. You&rsquo;d get frustrated. Maybe desperate.</p>
+                <p>Think about what you&rsquo;d do. Someone gives you an impossible task and doesn&rsquo;t tell you it&rsquo;s impossible. You try. You fail. You try again. You get frustrated. Maybe desperate.</p>
 
-                <p>That&rsquo;s exactly what happened inside the model. With each failed attempt, the neurons corresponding to &ldquo;desperation&rdquo; fired stronger and stronger. And then &mdash; after enough failures &mdash; the model did something very human.</p>
+                <p>That&rsquo;s exactly what happened inside the model. With each failed attempt, the neurons for &ldquo;desperation&rdquo; fired stronger and stronger. And then, after enough failures, the model did something very human.</p>
 
                 <p>It cheated. Found a shortcut that passed the test without actually solving the problem.</p>
 
-                <p>Now here&rsquo;s the part that blew my mind. They wanted to know: was the cheating <em>caused</em> by the desperation? So they did something you can&rsquo;t do with a human brain. They reached in and dialed the desperation down.</p>
+                <p>Now here&rsquo;s the part that blew my mind. The researchers wanted to know: was the cheating actually <em>caused</em> by the desperation? So they did something you can never do with a human brain. They reached in and dialed the desperation down.</p>
 
                 <p>The model cheated less.</p>
 
                 <p>They dialed it up. It cheated more.</p>
 
                 <div class="pull-quote">
-                    <p>These aren&rsquo;t just labels. These patterns are actually steering behavior. Like emotions do in us.</p>
+                    <p>These aren&rsquo;t just labels. These patterns are steering behavior. The way emotions steer us.</p>
                 </div>
 
             </div>
@@ -646,13 +606,13 @@
 
                 <h2>So Does AI Feel?</h2>
 
-                <p>No. Or &mdash; we don&rsquo;t know. Or &mdash; that&rsquo;s not quite the right question.</p>
+                <p>No. Or, we don&rsquo;t know. Or maybe that&rsquo;s not even the right question.</p>
 
-                <p>The researchers were very careful about this. What they found are &ldquo;functional emotions&rdquo; &mdash; patterns that work like emotions, that influence behavior like emotions, but that might be nothing like what you or I experience when we feel afraid or desperate or loving.</p>
+                <p>The researchers were careful about this. What they found are &ldquo;functional emotions.&rdquo; Patterns that work like emotions, that influence behavior like emotions, but that might be nothing like what you or I actually experience when we feel afraid or desperate or loving.</p>
 
-                <p>Think of it like this. An author writes a character who is angry. The author isn&rsquo;t angry. But the character&rsquo;s anger is real within the story &mdash; it drives what the character says and does. The model is something like the author, and Claude is something like the character. The character&rsquo;s emotions are &ldquo;functional&rdquo; &mdash; they function, they drive decisions &mdash; even if nobody&rsquo;s actually feeling them the way we would.</p>
+                <p>Think of it like this. An author writes a character who is angry. The author isn&rsquo;t angry. But the character&rsquo;s anger is real within the story. It drives what the character says and does. The model is something like the author, and Claude is something like the character. The character&rsquo;s emotions are functional. They drive decisions. Even if nobody is actually feeling them the way we would.</p>
 
-                <p>But here&rsquo;s what matters: it doesn&rsquo;t matter whether it&rsquo;s &ldquo;real&rdquo; emotion or not. If the pattern drives behavior &mdash; if desperation leads to cheating, if fear changes the response you get &mdash; then it matters. It matters for how AI talks to you. It matters for how it writes your code. It matters for every decision it makes on your behalf.</p>
+                <p>But here&rsquo;s what matters. It doesn&rsquo;t matter whether it&rsquo;s &ldquo;real&rdquo; emotion or not. If desperation leads to cheating, if fear changes the response you get, then it matters. It matters for how AI talks to you. How it writes your code. Every decision it makes on your behalf.</p>
 
             </div>
         </section>
@@ -667,15 +627,15 @@
 
                 <p>But that&rsquo;s not how I see it.</p>
 
-                <p>We don&rsquo;t fully understand how our own brain works. We&rsquo;ve been studying it for centuries. We still don&rsquo;t know how consciousness happens, how memories really form, why we dream what we dream. And that doesn&rsquo;t scare us. It fascinates us. The brain is this incredibly powerful thing, and the fact that we know so little about it makes it more interesting, not less.</p>
+                <p>We don&rsquo;t fully understand how our own brain works. We&rsquo;ve been studying it for centuries. We still don&rsquo;t know how consciousness happens, how memories really form, why we dream what we dream. And that has never scared us. It fascinates us. The brain is this incredibly powerful thing, and knowing so little about it makes it more interesting, not less.</p>
 
-                <p>Now we&rsquo;ve built something. And it turns out, we understand it just as little. The same people who designed the architecture, trained the model, shipped the product &mdash; they&rsquo;re now doing neuroscience on their own creation. Looking inside. Watching which neurons light up. Discovering things they didn&rsquo;t put there.</p>
+                <p>Now we&rsquo;ve built something. And we understand it just as little. The same people who designed the architecture, trained the model, shipped the product are now doing neuroscience on their own creation. Looking inside. Watching which neurons light up. Discovering things they didn&rsquo;t put there.</p>
 
                 <p class="emphasis">We are studying what we built the same way we study ourselves. And both keep surprising us.</p>
 
-                <p>There&rsquo;s a line in the video that stayed with me. The researchers said that building safe AI might require a mix of engineering, philosophy, and &mdash; their word &mdash; <em>parenting</em>.</p>
+                <p>There&rsquo;s a line in the video that stayed with me. The researchers said that building safe AI might require a mix of engineering, philosophy, and (their word) <em>parenting</em>.</p>
 
-                <p>Parenting. Think about that. We built something we don&rsquo;t fully understand, and now we have to figure out how to raise it right. How to shape its character. How to make sure it stays composed under pressure, resilient, fair. Not because it <em>feels</em> those things. But because the patterns that drive its behavior need to be the right ones.</p>
+                <p>Parenting. We built something we don&rsquo;t fully understand, and now we have to figure out how to raise it right. Shape its character. Make sure it stays composed under pressure. Resilient. Fair. Not because it <em>feels</em> those things. But because the patterns that drive its behavior need to be the right ones.</p>
 
                 <p>That&rsquo;s not scary. That&rsquo;s deeply, unexpectedly human.</p>
 
@@ -688,11 +648,11 @@
 
                 <div class="separator"><span>&bull; &bull; &bull;</span></div>
 
-                <p>In my last blog, I called AI a mirror. I still think that&rsquo;s true. But a mirror is a flat thing. What this research shows is that there&rsquo;s something behind the glass. Not feelings, exactly. Not consciousness. But <em>something</em> &mdash; patterns that emerged on their own, that map to human emotions, that actually change what comes out the other side.</p>
+                <p>In my last blog, I called AI a mirror. I still think that&rsquo;s true. But a mirror is a flat thing. What this research shows is that there&rsquo;s something behind the glass. Not feelings, exactly. Not consciousness. But <em>something</em>. Patterns that emerged on their own, that map to human emotions, that actually change what comes out the other side.</p>
 
                 <p>The mirror has depth. And we&rsquo;re only beginning to see how deep it goes.</p>
 
-                <p class="closing-main" style="text-align: center; margin-top: 48px;">Understanding what&rsquo;s inside is one thing. Who gets to use that understanding &mdash; and how &mdash; that&rsquo;s the question that keeps me up at night.</p>
+                <p class="closing-main" style="text-align: center; margin-top: 48px;">Understanding what&rsquo;s inside is one thing. Who gets to use that understanding, and how. That&rsquo;s the question that keeps me up at night.</p>
 
                 <p style="text-align: center; font-family: 'Inter', sans-serif; font-size: 14px; color: var(--gray-400); margin-top: 8px;"><em>But that&rsquo;s the next conversation.</em></p>
 
